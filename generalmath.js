@@ -1,6 +1,4 @@
-const arr = [5, 10, 15, 20];
-const array = [5, 10, 15, 20];
-const array2 = [5, 10, 15, 20];
+const GeneralMath = {};
 
 // const promedio = (arr) => {
 //   let suma = 0;
@@ -28,23 +26,23 @@ const array2 = [5, 10, 15, 20];
 // console.log(calcularPromedio(valorAcumulado, nuevoValor));
 
 //METODO REDUCE
-const sumaElementos = (array2) => {
-  const sumaArray = array2.reduce((a, b) => a + b);
+GeneralMath.sumaElementos = function sumaElementos(array) {
+  const sumaArray = array.reduce((a, b) => a + b);
   //   console.log(sumaArray);
-  const promedio = sumaArray / array2.length;
+  const promedio = sumaArray / array.length;
   return promedio;
 };
 // console.log(sumaElementos(array2));
 
 // ENCONTRAR SI UNA LISTA ES PAR O IMPAR Y CALCULAR LA MEDIANA
-function esPar(lista) {
+GeneralMath.esPar = function esPar(lista) {
   return !(lista.length % 2);
-}
-function esImpar(lista) {
+};
+GeneralMath.esImpar = function esImpar(lista) {
   return lista.length % 2;
-}
+};
 
-function calcularModa(lista) {
+GeneralMath.calcularModa = function calcularModa(lista) {
   const listaCount = {};
   for (let i in lista) {
     const element = lista[i];
@@ -72,11 +70,11 @@ function calcularModa(lista) {
   //   console.log(` La moda es: ${moda}`);
 
   return moda;
-}
+};
 
-function calcularMediana(listaDesordenada) {
-  const lista = ordenarLista(listaDesordenada);
-  const listaEsPar = esPar(lista);
+GeneralMath.calcularMediana = function calcularMediana(listaDesordenada) {
+  const lista = GeneralMath.ordenarLista(listaDesordenada);
+  const listaEsPar = GeneralMath.esPar(lista);
 
   if (listaEsPar) {
     // const indexMitad1ListaPar = lista.length / 2 - 1;
@@ -91,7 +89,7 @@ function calcularMediana(listaDesordenada) {
       mitad1ListaPar,
       mitad2ListaPar,
     ];
-    const medianaListaPar = sumaElementos(listaMitades);
+    const medianaListaPar = GeneralMath.sumaElementos(listaMitades);
     return medianaListaPar;
   } else {
     const indexMitadListaImpar = Math.floor(lista.length / 2);
@@ -100,11 +98,11 @@ function calcularMediana(listaDesordenada) {
     // console.log(lista[indexMitadListaImpar]);
     return medianaListaImpar;
   }
-}
+};
 
 //METODO SORT (ordenar lista de menor a mayor)
 
-function ordenarLista(listaDesordenada) {
+GeneralMath.ordenarLista = function ordenarLista(listaDesordenada) {
   function ordenarListaSort(valorAcumulado, nuevoValor) {
     // if (valorAcumulado > nuevoValor) {
     //   return 1;
@@ -126,7 +124,7 @@ function ordenarLista(listaDesordenada) {
   // const lista = listaDesordenada.sort((a,b) => a-b); Esta arroy function resume todo lo de arriba.
 
   return lista;
-}
+};
 
 // const pruebaOrdenarLista = (listaParaOrdenar) => {
 //   return listaParaOrdenar.sort((a, b) => a - b);
@@ -136,7 +134,7 @@ function ordenarLista(listaDesordenada) {
 //   pruebaOrdenarLista([4, 5, 6, 3, 12, 5, 90, 56, 80, 12345, 54, 76, 19])
 // );
 
-function solution(obj) {
+GeneralMath.solution = function solution(obj) {
   const arrObj = Object.entries(obj);
 
   const arrNew = [];
@@ -149,7 +147,7 @@ function solution(obj) {
     });
   }
   return arrNew;
-}
+};
 
 // console.log(solution({ 123: "Juanito Alcachofa", 456: "Juanita Alcaparra" }));
 
